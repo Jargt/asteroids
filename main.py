@@ -36,7 +36,11 @@ def main():
         for asteroid in asteroids:
             for bullet in bullets:
                 if bullet.has_collided(asteroid):
-                    asteroid.kill()
+                    bullet.kill()
+                    if asteroid.radius == ASTEROID_MIN_RADIUS:
+                        asteroid.kill()
+                    else:
+                        asteroid.split(dt)
         
         screen.fill('black')
         
